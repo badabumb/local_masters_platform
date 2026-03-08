@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой профиль</title>
+</head>
+<body>
+    <h1>Мой профиль</h1>
+
+    <p><strong>Имя:</strong> {{ profile.name }}</p>
+    <p><strong>Город:</strong> {{ profile.city }}</p>
+    <p><strong>О себе:</strong> {{ profile.about }}</p>
+
+    <p>
+        <strong>Статус:</strong>
+        {% if profile.is_master %}
+            мастер
+        {% else %}
+            покупатель
+        {% endif %}
+    </p>
+
+    <a href="/">На главную</a>
+</body>
+</html>

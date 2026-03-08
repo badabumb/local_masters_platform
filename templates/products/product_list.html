@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работы мастеров</title>
+</head>
+<body>
+    <h1>Работы мастеров</h1>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.title }} — {{ product.price }} руб.
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">На главную</a>
+</body>
+</html>
