@@ -7,13 +7,18 @@
 <body>
     <h1>Работы мастеров</h1>
 
-    <ul>
-        {% for product in products %}
-            <li>
-                {{ product.title }} — {{ product.price }} руб.
-            </li>
-        {% endfor %}
-    </ul>
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    {{ product.title }} — {{ product.price }} руб.<br>
+                    {{ product.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Пока товаров нет.</p>
+    {% endif %}
 
     <a href="/">На главную</a>
 </body>

@@ -1,0 +1,29 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set image tag
+        run: echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      - name: Build image
+        run: docker build -t local-masters-platform:${IMAGE_TAG} .
+
+      - name: Run migrations
+        run: echo "docker run myapp:${IMAGE_TAG} python manage.py migrate"
+
+      - name: Deploy
+        run: echo "docker compose up -d"
+
+      - name: Rollback example
+        run: echo "docker run myapp:previous_tag"
