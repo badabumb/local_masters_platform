@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="form-card shadow-sm">
+                <h1 class="h3 mb-4">Оформление заказа</h1>
+                <ul class="list-group list-group-flush mb-4">
+                    {% for item in items %}
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span>{{ item.product.title }} × {{ item.quantity }}</span>
+                            <strong>{{ item.total_price }} ₽</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="h5 mb-0">Итого</span>
+                    <span class="h4 mb-0">{{ total }} ₽</span>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-lg" type="submit">Подтвердить заказ</button>
+                    <a class="btn btn-outline-secondary btn-lg" href="{% url 'cart' %}">Назад</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

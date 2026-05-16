@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать профиль{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="form-card shadow-sm">
+                <h1 class="h3 mb-4">Редактировать профиль</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.city.id_for_label }}">{{ form.city.label }}</label>
+                        {{ form.city }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ form.about.id_for_label }}">{{ form.about.label }}</label>
+                        {{ form.about }}
+                    </div>
+                    <div class="form-check mb-4">
+                        {{ form.is_master }}
+                        <label class="form-check-label" for="{{ form.is_master.id_for_label }}">{{ form.is_master.label }}</label>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Сохранить</button>
+                    <a class="btn btn-outline-secondary" href="{% url 'profile_detail' %}">Отмена</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Работы мастеров</title>
-</head>
-<body>
-    <h1>Работы мастеров</h1>
+{% extends "base.html" %}
 
-    {% if products %}
-        <ul>
-            {% for product in products %}
-                <li>
-                    {{ product.title }} — {{ product.price }} руб.<br>
-                    {{ product.description }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Пока товаров нет.</p>
-    {% endif %}
+{% block title %}Работы мастеров{% endblock %}
 
-    <a href="/">На главную</a>
-</body>
-</html>
+{% block content %}
+<section class="container py-5">
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-center mb-4">
+        <div>
+            <h1 class="h2 mb-1">Работы мастеров</h1>
+            <p class="text-muted mb-0">Каталог изделий ручной работы от локальных авторов.</p>
+        </div>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url 'product_create' %}">Добавить товар</a>
+        {% endif %}
+    </div>
+    {% include "products/_product_grid.html" with products=products %}
+</section>
+{% endblock %}

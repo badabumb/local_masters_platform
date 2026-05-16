@@ -1,12 +1,17 @@
 from django.contrib import admin
-from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import include, path
 from pages.views import home
-from products.views import product_list
-from profiles.views import profile_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('products/', product_list, name='product_list'),
-    path('profile/', profile_detail, name='profile_detail'),
+    path('products/', include('products.urls')),
+    path('profile/', include('profiles.urls')),
+    path('', include('orders.urls')),
+    path('accounts/', include('users.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

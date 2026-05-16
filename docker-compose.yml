@@ -13,7 +13,7 @@ services:
 
   app:
     build: .
-    command: sh -c "python manage.py collectstatic --noinput && exec gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 30"
+    command: sh -c "python manage.py migrate --noinput && python manage.py collectstatic --noinput && exec gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 30"
     environment:
       SECRET_KEY: testkey
       DEBUG: "True"
@@ -30,9 +30,12 @@ services:
       APP_ENV: "production"
     ports:
       - "8080:8000"
+    volumes:
+      - media_data:/app/media
     depends_on:
       - db
       - redis
 
 volumes:
   postgres_data:
+  media_data:
