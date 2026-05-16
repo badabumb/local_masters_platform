@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 # DEBUG = os.getenv("DEBUG", "True") == "True"
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -138,6 +138,10 @@ USE_TZ = True
 
 APP_VERSION = os.getenv("APP_VERSION", "dev")
 APP_ENV = os.getenv("APP_ENV", "development")
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://local-masters-platform.onrender.com"
+]
 
 if os.getenv("REDIS_HOST"):
     CACHES = {
