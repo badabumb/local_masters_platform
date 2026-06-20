@@ -2,6 +2,7 @@ asgiref==3.11.1
 Django==6.0.3
 django-redis==6.0.0
 gunicorn==25.1.0
+hypothesis==6.155.6
 packaging==26.0
 psycopg2-binary==2.9.11
 redis==7.4.0

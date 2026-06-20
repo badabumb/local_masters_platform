@@ -30,6 +30,12 @@
                 {% endif %}
             </p>
             <p class="lead text-muted">{{ product.description }}</p>
+            {% if can_edit %}
+                <div class="d-flex gap-2 mt-4">
+                    <a class="btn btn-outline-secondary" href="{% url 'product_update' product.pk %}">Редактировать</a>
+                    <a class="btn btn-outline-danger" href="{% url 'product_delete' product.pk %}">Удалить</a>
+                </div>
+            {% endif %}
             {% if user.is_authenticated and product.author_id == user.id %}
                 <div class="alert alert-light border mt-4 mb-0">Это ваш товар. Его нельзя добавить в корзину.</div>
             {% else %}

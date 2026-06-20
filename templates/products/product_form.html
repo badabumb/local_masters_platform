@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Добавить товар{% endblock %}
+{% block title %}{% if product %}Редактировать товар{% else %}Добавить товар{% endif %}{% endblock %}
 
 {% block content %}
 <section class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-7">
             <div class="form-card shadow-sm">
-                <h1 class="h3 mb-4">Добавить товар</h1>
+                <h1 class="h3 mb-4">{% if product %}Редактировать товар{% else %}Добавить товар{% endif %}</h1>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}

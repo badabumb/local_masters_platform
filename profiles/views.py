@@ -2,7 +2,7 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from products.models import Product
 from .forms import ProfileForm
 from .models import Profile

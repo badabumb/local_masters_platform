@@ -7,7 +7,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=150, blank=True)
     city = models.CharField(max_length=100, blank=True)
     about = models.TextField(blank=True)
-    is_master = models.BooleanField(default=True)
+    is_master = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name or self.user.username

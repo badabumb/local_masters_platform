@@ -22,10 +22,6 @@
                         <label class="form-label" for="{{ form.about.id_for_label }}">{{ form.about.label }}</label>
                         {{ form.about }}
                     </div>
-                    <div class="form-check mb-4">
-                        {{ form.is_master }}
-                        <label class="form-check-label" for="{{ form.is_master.id_for_label }}">{{ form.is_master.label }}</label>
-                    </div>
                     <button class="btn btn-primary" type="submit">Сохранить</button>
                     <a class="btn btn-outline-secondary" href="{% url 'profile_detail' %}">Отмена</a>
                 </form>
